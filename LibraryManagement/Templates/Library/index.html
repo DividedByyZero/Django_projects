@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Library Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #045718;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        #logo {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: none;
+            color: red;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #003366;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        #slider-container {
+            max-width: 800px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        #slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{% static "Library/logo.png" %}" alt="University Logo" id="logo">
+        <h1>Welcome to the Library</h1>
+    </header>
+
+    <nav>
+        <a href="{%url 'home'%}">Home</a>
+        <a href="{%url 'StudentRegForm'%}">Register</a>
+        <a href="{%url 'addBook'%}">Add Book</a>
+        <a href="{%url 'booklist'%}">Book List</a>
+        <a href="{%url 'borrow'%}">Borrow</a>
+        <a href="#return">Return</a>
+        <a href="{%url 'login'%}">Login</a>
+    </nav>
+
+    <section>
+        <section id="slider-container">
+            <div id="slider">
+                <div class="slide">
+                    <img src="{% static "Library/1.jpg" %}" alt="Library Interior">
+                </div>
+                <div class="slide">
+                    <img src="{% static "Library/2.jpg" %}" alt="Bookshelves">
+                </div>
+                <div class="slide">
+                    <img src="{% static "Library/3.jpg" %}" alt="Reading Area">
+                </div>
+                <div class="slide">
+                    <img src="{% static "Library/4.jpg" %}" alt="Study Tables">
+                </div>
+                <div class="slide">
+                    <img src="{% static "Library/5.jpg" %}" alt="Library Events">
+                </div>
+                <!-- Add more slides as needed -->
+            </div>
+        </section>
+    </section>
+    
+    <footer>
+        <p>&copy; 2023 Nabeel Ahsan</p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            if (index < 0) {
+                index = totalSlides - 1;
+            } else if (index >= totalSlides) {
+                index = 0;
+            }
+
+            const translateValue = -index * 100 + '%';
+            slider.style.transform = 'translateX(' + translateValue + ')';
+            currentIndex = index;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "C:/Users/lsaje/OneDrive/Desktop/New folder"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Django practice"
+	}
+}
